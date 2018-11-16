@@ -2,9 +2,26 @@ package main
 
 import "fmt"
 
-func convertString(str string) string {
+func ConvertString(str string) string {
 
-	return ""
+	bs := []byte(str)
+
+	for i, r := range bs {
+		if r == 10 {
+			s := append(bs[:i], byte(32))
+			bs = append(s, bs[i+1:]...)
+		}
+	}
+
+	for i := len(bs) - 1; i >= 0; i-- {
+		if bs[i] == 32 && bs[i+1] == 32 {
+			bs = append(bs[:i], bs[i+1:]...)
+		}
+	}
+
+	s := string(bs)
+
+	return s
 }
 
 func main() {
@@ -45,23 +62,7 @@ amount
  levels of
 detail exist within the shape.`
 
-	bs := []byte(str)
+	s := ConvertString(str)
 
-	for i, r := range bs {
-		if r == 10 {
-			s := append(bs[:i], byte(32))
-			bs = append(s, bs[i+1:]...)
-		}
-	}
-
-	for i := len(bs) - 1; i >= 0; i-- {
-		if bs[i] == 32 && bs[i+1] == 32 {
-			bs = append(bs[:i], bs[i+1:]...)
-		}
-	}
-
-	fmt.Println(bs)
-
-	s := string(bs)
 	fmt.Println(s)
 }
