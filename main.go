@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package ppaster
 
 func ConvertString(str string) string {
 
@@ -22,47 +20,4 @@ func ConvertString(str string) string {
 	s := string(bs)
 
 	return s
-}
-
-func main() {
-	str := `Like any procedural technique
-, a fractal shape is defined
- by an
-algorithm
- for generating
- the shape. In the case of fractals
- these
-algorithms
- are recursive
- and successive
- recursions
- yield more
-detailed
- versions
- of the basic shape. The example of the Koch
-snowflake in Figure 2 shows four such recursions.
- Self-similarit
-y
-is achieved
- by generating
- the same shapes or patterns
- at smaller
-and smaller
- scales as the recursion
- progresses,
- a propert
-y often
-referred
- to as scale invariance.
- There is no theoretical
- limit to the
-amount
- of recursion
- that can be done and hence infinite
- levels of
-detail exist within the shape.`
-
-	s := ConvertString(str)
-
-	fmt.Println(s)
 }
